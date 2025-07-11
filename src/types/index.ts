@@ -1,43 +1,49 @@
-// Basic types that ESLint can understand
-
-// User interface (simplified)
 export interface User {
   id: number;
   email: string;
   firstName: string;
   lastName: string;
-  role: string;
+  role: UserRoleType;
   isActive: boolean;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
-// API Response (simplified)
-export interface ApiResponse {
+export interface ApiResponse<T = unknown> {
   success: boolean;
   message: string;
-  data?: any;  // Using 'any' for simplicity
+  data?: T;
   error?: string;
 }
 
-// User roles (simple enum)
+// User roles as const assertion (better than enum for this case)
 export const UserRole = {
   ADMIN: 'admin',
   USER: 'user',
   MODERATOR: 'moderator'
 } as const;
 
-// Login request
+// Type derived from the const object
+export type UserRoleType = typeof UserRole[keyof typeof UserRole];
+
 export interface LoginRequest {
   email: string;
   password: string;
 }
 
-// Register request  
 export interface RegisterRequest {
   email: string;
   password: string;
   firstName: string;
   lastName: string;
+  role?: UserRoleType;
 }
 
-// Export a simple type for the role
-export type UserRoleType = typeof UserRole[keyof typeof UserRole];
+export interface JwtPayload {
+  userId: number;
+  email: string;
+  role: UserRoleType;
+}
+
+// Default user role for convenience
+export const DEFAULT_USER_ROLE = UserRole.USER;

@@ -1,12 +1,10 @@
 import { createClient } from 'redis';
 
-// Use 'any' type to avoid parsing issues (temporary)
 const redisClient = createClient({
   url: process.env.REDIS_URL || 'redis://localhost:6379'
 });
 
-// Use generic error handling
-redisClient.on('error', (err) => {
+redisClient.on('error', (err: Error) => {
   console.error('Redis Client Error', err);
 });
 
