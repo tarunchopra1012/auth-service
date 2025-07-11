@@ -34,7 +34,8 @@ app.get('/health', (req, res) => {
   });
 });
 
-// Error handling middleware (FIXED - proper typing and unused parameter)
+// Error handling middleware
+ 
 app.use((err: Error, req: express.Request, res: express.Response, _next: express.NextFunction) => {
   console.error(err.stack);
   res.status(500).json({ 
