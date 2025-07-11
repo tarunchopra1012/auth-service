@@ -10,11 +10,16 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "lint": "eslint src/**/*.ts",
-    "lint:fix": "eslint src/**/*.ts --fix",
+    "lint": "npx eslint --config eslint.config.simple.js src/**/*.ts",
+    "lint:fix": "npx eslint --config eslint.config.simple.js --fix src/**/*.ts",
     "format": "prettier --write src/**/*.ts",
     "lint:check": "eslint src/**/*.ts --max-warnings 0",
-    "format:check": "prettier --check src/**/*.ts"
+    "format:check": "prettier --check src/**/*.ts",
+    "lint:dev": "npx eslint --config eslint.config.dev.js src/**/*.ts",
+    "lint:prod": "npx eslint --config eslint.config.prod.js src/**/*.ts",
+    "lint:dev:fix": "npx eslint --config eslint.config.dev.js --fix src/**/*.ts",
+    "lint:prod:fix": "npx eslint --config eslint.config.prod.js --fix src/**/*.ts",
+    "lint:simple": "npx eslint --config eslint.config.simple.js src/**/*.ts"
   },
   "repository": {
     "type": "git",

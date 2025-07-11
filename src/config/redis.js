@@ -1,11 +1,9 @@
-import { createClient } from 'redis';
+const { createClient } = require('redis');
 
-// Use 'any' type to avoid parsing issues (temporary)
 const redisClient = createClient({
   url: process.env.REDIS_URL || 'redis://localhost:6379'
 });
 
-// Use generic error handling
 redisClient.on('error', (err) => {
   console.error('Redis Client Error', err);
 });
@@ -14,4 +12,4 @@ redisClient.on('connect', () => {
   console.log('✅ Connected to Redis');
 });
 
-export { redisClient };
+module.exports = { redisClient };
