@@ -6,7 +6,7 @@ export interface TestInterface {
 }
 
 const test: TestInterface = {
-  message: 'TypeScript is working!'
+  message: 'TypeScript is working!',
 };
 
 console.log(test.message);
