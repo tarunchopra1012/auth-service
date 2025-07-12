@@ -20,11 +20,11 @@ export interface ApiResponse<T = unknown> {
 export const UserRole = {
   ADMIN: 'admin',
   USER: 'user',
-  MODERATOR: 'moderator'
+  MODERATOR: 'moderator',
 } as const;
 
 // Type derived from the const object
-export type UserRoleType = typeof UserRole[keyof typeof UserRole];
+export type UserRoleType = (typeof UserRole)[keyof typeof UserRole];
 
 export interface LoginRequest {
   email: string;

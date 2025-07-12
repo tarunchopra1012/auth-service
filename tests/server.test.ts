@@ -1,8 +1,10 @@
-import request from "supertest";
-// Note: We'll import the app when we have it properly exported
-
-describe("Server Health Check", () => {
-  it("should be ready for testing", () => {
+describe('Server Tests', () => {
+  it('should pass basic test', () => {
     expect(true).toBe(true);
+  });
+
+  it('should understand TypeScript', () => {
+    const message: string = 'Hello TypeScript!';
+    expect(message).toBe('Hello TypeScript!');
   });
 });
